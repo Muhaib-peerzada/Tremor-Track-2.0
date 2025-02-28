@@ -8,28 +8,6 @@ import gdown
 import os
 
 
-
-# Google Drive file ID and output file name
-file_id = "1MQxltXuyc_pcwAKs5P10wKPRjIymTLW2"
-output_file = "earthquake_magnitude_predictor.pkl"
-
-# Function to download the file
-def download_file(file_id, output_file):
-    url = f"https://drive.google.com/uc?export=download&id={file_id}"
-    gdown.download(url, output_file, quiet=False)
-
-# Display a loading screen while downloading
-if not os.path.exists(output_file):
-    with st.spinner("Kindly wait while the app fetches the model..."):
-        download_file(file_id, output_file)
-        st.success("Download complete!")
-
-# Load the model
-try:
-    model = joblib.load(output_file)
-    st.success("Model loaded successfully!")
-except Exception as e:
-    st.error(f"Failed to load model: {e}")
 # Set page configuration
 st.set_page_config(
     page_title="TremorTrack 2.0",
@@ -138,7 +116,28 @@ with st.sidebar:
     - Prediction model trained on USGS global earthquake data
     - Visualizations use 50 ShakeMap datasets from USGS
     """)
+# Google Drive file ID and output file name
+file_id = "1MQxltXuyc_pcwAKs5P10wKPRjIymTLW2"
+output_file = "earthquake_magnitude_predictor.pkl"
 
+# Function to download the file
+def download_file(file_id, output_file):
+    url = f"https://drive.google.com/uc?export=download&id={file_id}"
+    gdown.download(url, output_file, quiet=False)
+
+# Display a loading screen while downloading
+if not os.path.exists(output_file):
+    with st.spinner("Kindly wait while the app fetches the model..."):
+        download_file(file_id, output_file)
+        st.success("Download complete!")
+
+# Load the model
+try:
+    model = joblib.load(output_file)
+    st.success("Model loaded successfully!")
+except Exception as e:
+    st.error(f"Failed to load model: {e}")
+    
 # Load the pre-trained models and dataset for visualization
 @st.cache_data
 def load_models_and_data():
