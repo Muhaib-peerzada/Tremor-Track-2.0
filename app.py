@@ -134,7 +134,7 @@ if not os.path.exists(output_file):
 # Load the model
 try:
     model = joblib.load(output_file)
-    st.success("Model loaded successfully!")
+    #st.success("Model loaded successfully!")
 except Exception as e:
     st.error(f"Failed to load model: {e}")
     
@@ -324,7 +324,7 @@ elif st.session_state['page'] == 'visualization':
         statsmodels_available = True
     except ImportError:
         statsmodels_available = False
-        st.warning("📦 The `statsmodels` package is not installed. Some visualizations will have limited functionality. Install it with: `pip install statsmodels`")
+        #st.warning("📦 The `statsmodels` package is not installed. Some visualizations will have limited functionality. Install it with: `pip install statsmodels`")
     
     # Check if there's a predicted magnitude and depth
     if 'predicted_magnitude' in st.session_state:
@@ -731,7 +731,8 @@ elif st.session_state['page'] == 'about':
     st.markdown("""
     ### Overview
     
-    TremorTrack 2.0 is an advanced earthquake magnitude prediction and visualization tool designed for seismologists, emergency management professionals, and researchers. The application uses machine learning to predict earthquake magnitudes based on seismic parameters and provides comprehensive visualizations for analysis.
+    TremorTrack 2.0 is an advanced earthquake magnitude prediction and visualization tool Still in development 
+    designed for seismologists, emergency management professionals, and researchers. The application uses machine learning to predict earthquake magnitudes based on seismic parameters and provides comprehensive visualizations for analysis.
     
     ### Key Features
     
