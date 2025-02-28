@@ -137,7 +137,12 @@ try:
     #st.success("Model loaded successfully!")
 except Exception as e:
     st.error(f"Failed to load model: {e}")
-    
+# Lazy load the model only when needed
+@st.cache_resource
+def load_model():
+    with open(output_file, "rb") as file:
+        model = pickle.load(file)
+    return model    
 # Load the pre-trained models and dataset for visualization
 @st.cache_data
 def load_models_and_data():
