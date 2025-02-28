@@ -129,7 +129,7 @@ def download_file(file_id, output_file):
 if not os.path.exists(output_file):
     with st.spinner("Kindly wait while the app fetches the model..."):
         download_file(file_id, output_file)
-        st.success("Download complete!")
+        #st.success("Download complete!")
 
 # Load the model
 try:
